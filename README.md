@@ -7,7 +7,8 @@ Features
 --------
  * Minimal and Clean UI
  * All important parameters like OS Info, Processor Info, Memory Usage & Weather Info present
- * Simple one step install
+ * Unified installation and uninstallation toggle script
+ * **Fixed Duplicate Startup Bug:** The banner will now only execute once per terminal session, even if your configuration file is loaded multiple times.
  * Automatic detection of OS and Shell for installation
  * For manual installation, check the Banner.sh file and manually import in your distros.
 
@@ -24,17 +25,28 @@ Initialize the Repository
 
 This will clone the repository in your system!
 
-Injecting the Banner 
---------------------
-Before injecting, make sure to change the city for Weather in Banner.sh file. 
-Default value which I am using here is of Bengaluru.
+Configuration & Customization
+-----------------------------
+Before injecting the banner, you can personalize the configuration inside the `Banner.sh` file:
 
-Install customised Welcome Message in your system with the installWelcome.sh script using this command:
+1. **Weather Location:** Change the `city` variable to your current location (Default is set to `Bengaluru`).
+2. **Custom Greeting Text:** Search for `$(whoami)` near the bottom of the script and replace it with **"YOUR NAME"** to personalize your greeting message.
+
+Managing the Welcome Banner 
+---------------------------
+
+### To Install:
+Run the unified installation script by sourcing it. This automatically detects your OS and interactive shell profile to append the configuration safely:
 
      source installWelcome.sh
 
-This will automatically inject the Welcome Banner in your system by automatically detecting your OS and Shell.
+### To Uninstall:
+If you want to remove the welcome banner and restore your default shell environment, execute the same script with the `--uninstall` toggle flag (no sourcing required):
+
+     chmod +x installWelcome.sh
+     ./installWelcome.sh --uninstall
 
 Contact Info
 ------------
 Find me in [Telegram](https://t.me/sagarshah1729) or Email me at sagarshah2326@gmail.com.
+

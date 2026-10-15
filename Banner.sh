@@ -27,14 +27,21 @@ HOST=$(hostname)
     if [[ ${#HOST} -lt 14 ]]; then
         echo -e "${lightgray}"
         figlet -c "$(hostname)" | lolcat
+        figlet -c "MOCO-SN" | lolcat
     fi
+    
     echo ""
+    echo -e "${purple}\\t"
     echo -e "${purple}\\tToday is:\\t\\t${cyan} $(date)"
     echo -e "${purple}\\tOperating System: \\t${cyan} $(lsb_release -ds) ($(uname -o))"
     echo -e "${purple}\\tProcessor: \\t\\t${cyan} $(lscpu | grep 'Model name' | cut -f 2 -d ":" | awk '{$1=$1}1')"
     echo -e "${purple}\\tKernel Information: \\t${cyan} $(uname -smr)"
-    echo -e "${purple}\\tUptime: \\t\\t ${lightgray}Host up for ${cyan}${UPTIME}"
-    echo -e "${purple}\\tMemory Usage: \\t\\t${lightgray} Used ${cyan}${used_memory} MB ${lightgray}of ${cyan}${total_memory} MB ${lightgray}(${cyan}${memory_usage_percent} %${lightgray})\n\\t\\t\\t\\t ${cyan}${free_memory} MB ${lightgray}available"
+    echo -e "${purple}\\tUptime: \\t\\t ${green}Host up for ${cyan}${UPTIME}"
+    echo -e "${purple}\\tMemory Usage: \\t\\t${green} Used ${cyan}${used_memory} MB ${lightgray}of ${cyan}${total_memory} MB ${lightgray}(${cyan}${memory_usage_percent} %${lightgray})\n\\t\\t\\t\\t ${cyan}${free_memory} MB ${lightgray}available"
     echo -e "${purple}\\tWeather in ${city}: \\t${cyan} ${weather}"
     echo ""
-    echo -e "${lightgray}\\tHave a great day, ${purple}$(whoami)${lightgray}!"
+    echo -e "${green}\\tHave a great day, ${purple}$(whoami)${lightgray}!"
+if [ -n "$MY_MOTD_HAS_RUN" ]; then
+    return
+fi
+export MY_MOTD_HAS_RUN=1
