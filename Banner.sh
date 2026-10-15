@@ -27,7 +27,7 @@ HOST=$(hostname)
     if [[ ${#HOST} -lt 14 ]]; then
         echo -e "${lightgray}"
         figlet -c "$(hostname)" | lolcat
-        figlet -c "MOCO-SN" | lolcat
+        figlet -c "YOUR NAME" | lolcat # edit your ctm text here in b/w " ".
     fi
     
     echo ""
